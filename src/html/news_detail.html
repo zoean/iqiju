@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, telephone=no">
+    <meta name="flexible" content="initial-dpr=2">
+    <title>齐聚科技 - 新闻</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/subpage.css">
+    <script type="text/javascript" src="../libs/flexible/flexible_css.js"></script>
+    <script type="text/javascript" src="../libs/flexible/flexible.js"></script>
+</head>
+<body>
+	
+	<nav>
+		<p class="cur">
+			<a href="intro.html">
+				<span>
+					<b>简介</b>
+				</span>
+				<span>
+					<s>COMPANY PROFILE</s>
+				</span>
+			</a>
+		</p>
+		<p>
+			<a href="product.html">
+				<span>产品</span>
+				<span>PRODUCT</span>
+			</a>
+		</p>
+		<p>
+			<a href="news.html">
+				<span>新闻</span>
+				<span>NEWS</span>
+			</a>
+		</p>
+		<p>
+			<a href="joinus.html">
+				<span>关于我们</span>
+				<span>ABOUT US</span>
+			</a>
+		</p>
+	</nav>
+	<div class="header-bd">
+		<a href="../index.html"><img src="../img/common/logo.png" alt="" class="logo"></a>
+		<img class="icon" src="../img/common/icon.png">
+		<img src="../img/common/menu.png" alt="" class="menu">
+		<p class="head_bg"></p>
+	</div>
+	<div class="subpage">
+		<ol class="subnav">
+			<li><a href="intro.html"><span>简介</span></a></li>
+			<li><a href="product.html"><span>产品</span></a></li>
+			<li class="cur"><a href="news.html"><span>新闻</span></a></li>
+			<li class="last"><a href="joinus.html"><span>关于我们</span></a></li>
+		</ol>
+		<div class="subcont">
+			<div class="cont newsdetail">
+				<h2>网安警务标杆企业：阿里巴巴、齐聚科技获公安部认可</h2>
+				<p class="newstime"><s class="time"></s><span>2018-12-03</span></p>				
+			</div>	
+			<div class="back newsback">
+				<a href="news.html">
+					返回列表
+						<img src="../img/common/back.png" alt="">
+				</a>
+			</div>
+		</div>	
+	</div>
+</body>
+<script type="text/javascript" src="../libs/zepto/zepto.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript">
+	var newid = location.search.split("=")[1];
+	console.log(newid)
+  var newUrl = "http://op.admin.jufan.tv/api/newsDetail?callbackname=?&id=" + newid;
+  $.getJSON(newUrl, function (json){
+    try{
+     $(".newsdetail h2").prepend(json.title);
+     $(".newstime span").html(json.pub_date)
+     $(".newsdetail").append(json.content);
+    }catch(e){}
+  })
+</script>
+</html>
